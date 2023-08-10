@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 const Carbon = () => {
   const params = useParams();
-  console.log("customer_id", params.di);
+  console.log("customer_id", params.id);
   const [results, setResults] = useState({ hello: "ss" });
   const BASE_DEV = "https://ask-dev.myaskai.com/";
   const BASE_PROD = "https://ask.myaskai.com/";
