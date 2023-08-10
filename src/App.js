@@ -5,10 +5,10 @@ function App() {
   return (
     // Set up routing using the <Routes> component
     <Routes>
-      {/* Define a route for the root path */}
-      <Route path="/" element={<></>} />
       {/* Define a route for the Carbon path */}
-      <Route path="/carbon" element={<Carbon />} />
+      <Route path="/carbon" exact element={<Carbon />} />
+      {/* Define a route for the root path */}
+      <Route path="/" exact element={<></>} />
     </Routes>
   );
 }
