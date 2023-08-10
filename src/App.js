@@ -4,15 +4,12 @@ import Carbon from "./components/Carbon";
 
 function App() {
   return (
+    // Set up routing using the <Routes> component
     <Routes>
-      <Route
-        path="/"
-        element={
-          <>
-            <Carbon />
-          </>
-        }
-      />
+      {/* Define a route for the root path */}
+      <Route path="/" element={<></>} />
+      {/* Define a route for the Carbon path */}
+      <Route path="/carbon" element={<Carbon />} />
     </Routes>
   );
 }

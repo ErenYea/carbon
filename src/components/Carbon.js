@@ -3,13 +3,19 @@ import { CarbonConnect } from "carbon-connect";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 const Carbon = () => {
+  // Get the customer_id from the URL query parameter
   const search = useLocation().search;
-  // console.log("customer_id", params.id);
   const id = new URLSearchParams(search).get("customer_id");
   console.log(id);
-  const [results, setResults] = useState({ hello: "ss" });
+
+  // State to hold the results
+  const [results, setResults] = useState(null);
+
+  // Base URLs for different environments
   const BASE_DEV = "https://ask-dev.myaskai.com/";
   const BASE_PROD = "https://ask.myaskai.com/";
+
+  // Function to fetch Carbon access token
   const tokenFetcher = async () => {
     const response = await axios.get(`${BASE_DEV}auth/fetch-carbon-token`, {
       params: { customer_id: id }, //customer_id from URL param
@@ -20,9 +26,11 @@ const Carbon = () => {
     });
 
     const data = await response.json();
-    // Just return the response data which contains the access_token.
+    // Return the access_token from the response data
     return data.access_token;
   };
+
+  // Alert if customer_id is not provided
   useEffect(() => {
     if (id == null) {
       alert("Please provide customer ID in the url");
